@@ -124,7 +124,7 @@ Board.prototype = {
       }
     }
   },
-  reset: function(with, height){
+  reset: function(width, height){
 		this.width = width
 		this.height = height
     this.grid = Array(this.height).fill(0).map(x => Array(this.width).fill('_'))
