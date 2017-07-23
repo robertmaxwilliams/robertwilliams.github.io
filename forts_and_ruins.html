@@ -28,11 +28,17 @@
     
     <div class="container">
     <body>
-            
+        <button onclick="newGame(20, 20)">Click me</button>
+        <input id="sizeChooser" type="number" name="quantity" min="5" max="100" step="5">
+        <input type="submit", onclick="newGame(document.getElementById("sizeChooser").value, 20)">
+    <br>
+      <button onclick="newGame(document.getElementById("sizeChooser").value, 20)">Click me</button>
+      <br>
       <canvas id="myCanvas" width="300" height="300" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
       <br>
       <canvas id="colorPicker" width="300" height="50" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
       <script src = "/forts_and_ruins.js"></script>
+      
       <p> version 3 </p>
 
     </body>
