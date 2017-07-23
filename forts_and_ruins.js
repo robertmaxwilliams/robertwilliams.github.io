@@ -328,14 +328,13 @@ Board.prototype = {
   }
 }
 
-var board = new Board(10, 10)
-var colorPicker = new ColorPicker()
 
 
 
-board.setTile(2, 5, "F")
-board.setTile(2, 6, 1)
-board.setTile(2, 4, 3)
-console.log(board.toString())
-board.draw()
-colorPicker.draw()
+function newGame(width, height){
+	var board = new Board(width, height)
+	var colorPicker = new ColorPicker()
+	console.log(board.toString())
+	board.draw()
+	colorPicker.draw()
+}
