@@ -44,6 +44,7 @@ var selectedFieldNum = 0
 function ColorPicker() {
   this.numColors = fieldColors.length
   this.calculateSize()
+  this.draw()
 }
 ColorPicker.prototype = {
   constructor: ColorPicker,
