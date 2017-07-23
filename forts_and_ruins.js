@@ -129,6 +129,7 @@ Board.prototype = {
 		this.height = height
     this.grid = Array(this.height).fill(0).map(x => Array(this.width).fill('_'))
 		this.gameOver = false
+		this.calculateSize()
     this.turnNumber = 0
     this.setTile(2, 5, 'F')
     this.setTile(2, 6, '1')
