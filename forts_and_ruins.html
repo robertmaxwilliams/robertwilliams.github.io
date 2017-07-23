@@ -28,12 +28,10 @@
     
     <div class="container">
     <body>
-        <button onclick="newGame(20, 20)">Click me</button>
-        <input id="sizeChooser" type="number" name="quantity" min="5" max="100" step="5">
-        <input type="submit", onclick="newGame(parseInt(document.getElementById('sizeChooser').value), parseInt(document.getElementById('sizeChooser').value))"
->
-    <br>
-      <button onclick="newGame(document.getElementById("sizeChooser").value, 20)">Click me</button>
+      <button onclick="newGame(9, 9)">new 9x9 game</button>
+      <button onclick="newGame(10, 10)">new 10x10 game</button>
+      <button onclick="newGame(20, 20)">new 20x20 game</button>
+      <button onclick="newGame(20, 20)">new 30x30 game</button>
       <br>
       <canvas id="myCanvas" width="300" height="300" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
       <br>
