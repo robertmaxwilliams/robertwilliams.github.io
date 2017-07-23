@@ -132,9 +132,9 @@ Board.prototype = {
 		this.gameOver = false
 		this.calculateSize()
     this.turnNumber = 0
-    this.setTile(2, 5, 'F')
-    this.setTile(2, 6, '1')
-	  this.setTile(2, 4, '3')
+    this.setTile(2, 3, 'F')
+    this.setTile(2, 2, '1')
+	  this.setTile(2, 1, '3')
 		//draw background in case pixels leak through
     this.drawSquare(0, 0, this.canvas.width, this.canvas.height, "#966341")
     this.draw()
