@@ -79,8 +79,10 @@ ColorPicker.prototype = {
   getPosition: function(event) {
     var x = event.clientX
     var y = event.clientY
-    //x -= -5 //this.canvas.offsetLeft;
-    //y -= -5 //this.canvas.offsetTop;
+    var bounds = viewport.getBounds(true);
+    var topLeft = viewport.viewportToViewerElementCoordinates(bounds.getTopLeft());
+    x -= topLeft.x
+    y -= topLeft.y
     selectedFieldNum = mod(Math.floor(x / this.w), fieldColors.length)
     this.draw()
   }
@@ -269,10 +271,10 @@ Board.prototype = {
     	this.reset()
       return
     }
-    var x =  event.clientX
-    var y =  event.clientY
-    //x -= -5 //this.canvas.offsetLeft;
-    //y -= -5 //this.canvas.offsetTop;
+    var bounds = viewport.getBounds(true);
+    var topLeft = viewport.viewportToViewerElementCoordinates(bounds.getTopLeft());
+    x -= topLeft.x
+    y -= topLeft.y
     if (this.tryPlaceField(x, y)) {
       this.draw()
       console.log(this.toString())
