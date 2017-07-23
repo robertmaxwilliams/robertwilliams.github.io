@@ -308,6 +308,7 @@ Board.prototype = {
   },
   //kill all fields of a certain color
   killAllFields(colorNum) {
+    lastKilledNum = colorNum
   	console.log("killed", colorNum)
     for (i in this.grid) {
       for (j in this.grid[i]) {
@@ -328,6 +329,8 @@ Board.prototype = {
       	}
       }
     }
+    this.draw()
+    this.colorPicker.draw()
     if (numForts == 0)
     	this.gameOver = true
        
@@ -344,7 +347,7 @@ Board.prototype = {
 
 var board = new Board(20, 20)
 var colorPicker = new ColorPicker()
-
+board.colorPicker = colorPicker()
 function newGame(width, height){
 	board.reset(width, height)
 	console.log(board.toString())
