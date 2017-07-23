@@ -77,7 +77,7 @@ ColorPicker.prototype = {
   },
   //draw the color picker
   draw: function() {
-    for (var n in fieldColors) {
+    for (var n = 0; n < fieldColors.length; n++) {
       this.drawButtonTile(n)
     }
   },
@@ -116,14 +116,14 @@ Board.prototype = {
     if (sides.length == 0)
       return
 
-    for (var n in sides) {
+    for (var n = 0; n < sides.length; n++) {
       if (this.lookForForts([sides[n]])) {
         var sym = "F" //place forts
       } else {
         var sym = "_" //put back to dirt
       }
-      for (var i in this.grid) {
-        for (var j in this.grid[i]) {
+      for (var i = 0; i < this.grid.length; i++) {
+        for (var j = 0; j < this.grid[i].length; j++) {
           if (this.getTile(i, j) == "-") {
             this.setTile(i, j, sym)
           }
@@ -156,7 +156,7 @@ Board.prototype = {
 
     //go on to recursively check adjacent branches
     var result = true;
-    for (var n in options) {
+    for (var n = 0; n < options.length; n++) {
       var i = options[n][0]
       var j = options[n][1]
       if (this.isNearWall(i, j))
@@ -199,8 +199,8 @@ Board.prototype = {
   },
   toString: function() {
     var buffer = "Game Board:\n"
-    for (var i in this.grid) {
-      for (var j in this.grid[i]) {
+    for (var i = 0; i < this.grid.length; i++) {
+      for (var j = 0; j < this.grid[i].length; j++) {
         buffer = buffer.concat(this.getTile(i, j)[0])
       }
       buffer = buffer.concat('\n')
@@ -226,8 +226,8 @@ Board.prototype = {
     },
     drawGameOver: function() {
     var forts = 0
-   	for (var i in this.grid) {
-      for (var j in this.grid[i]) {
+   	for (var i = 0; i < this.grid.length; i++) {
+      for (var j = 0; j < this.grid[i].length; j++) {
       	if (this.getTile(i, j) == 'f'){
           	forts += 1
         }
@@ -250,8 +250,8 @@ Board.prototype = {
     	this.drawGameOver()
       return
     }
-    for (var i in this.grid) {
-      for (var j in this.grid[i]) {
+    for (var i = 0; i < this.grid.length; i++) {
+      for (var j = 0; j < this.grid[i].length; j++) {
         if (this.getTile(i, j) == 'F') { //draw fort
           this.drawSquare(i * this.w, j * this.h, this.w, this.h, "#82355B")
           this.drawDiamond(i, j, "#A9A9A9")
@@ -316,8 +316,8 @@ Board.prototype = {
   killAllFields(colorNum) {
     lastKilledNum = colorNum
   	console.log("killed", colorNum)
-    for (var i in this.grid) {
-      for (var j in this.grid[i]) {
+    for (var i = 0; i < this.grid.length; i++) {
+      for (var j = 0; j < this.grid[i].length; j++) {
         if (this.getTile(i, j) == ''+colorNum) {
           this.setTile(i, j, 'd' + colorNum)
         }
@@ -325,8 +325,8 @@ Board.prototype = {
     }
     //kill forts that don't have a live field adjacent to them
     var numForts = 0
-    for (var i in this.grid) {
-      for (var j in this.grid[i]) {
+    for (var i = 0; i < this.grid.length; i++) {
+      for (var j = 0; j < this.grid[i].length; j++) {
       	if (this.getTile(i, j) == 'F'){
           //var nearbyFields = this.adjacentTo(i, j, isNumeric)
           console.log("fort at", i, j) 
