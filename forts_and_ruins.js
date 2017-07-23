@@ -98,6 +98,7 @@ function Board(width, height) {
   this.calculateSize()
   var listener = this.getPosition.bind(this) //needed bc JS is bad
   this.canvas.addEventListener("mousedown", listener, false);
+	this.reset(width, height)
 }
 Board.prototype = {
   constructor: Board,
@@ -123,13 +124,17 @@ Board.prototype = {
       }
     }
   },
-  reset: function(){
+  reset: function(with, height){
+		this.width = width
+		this.height = height
     this.grid = Array(this.height).fill(0).map(x => Array(this.width).fill('_'))
 		this.gameOver = false
     this.turnNumber = 0
     this.setTile(2, 5, 'F')
     this.setTile(2, 6, '1')
 	  this.setTile(2, 4, '3')
+		//draw background in case pixels leak through
+    this.drawSquare(0, 0, this.canvas.width, this.canvas.height, "#966341")
     this.draw()
   },
   //returns true for good to build, false for no good. fills potential space with "-" as it works
@@ -265,7 +270,7 @@ Board.prototype = {
   getPosition: function(event) {
   	if (this.gameOver){
     	console.log("restart")
-    	this.reset()
+    	this.reset(this.width, this.height)
       return
     }
     var rect = this.canvas.getBoundingClientRect();
@@ -329,11 +334,11 @@ Board.prototype = {
 }
 
 
-
+var board = new Board(20, 20)
+var colorPicker = new ColorPicker()
 
 function newGame(width, height){
-	var board = new Board(width, height)
-	var colorPicker = new ColorPicker()
+	board.reset(width, height)
 	console.log(board.toString())
 	board.draw()
 	colorPicker.draw()
