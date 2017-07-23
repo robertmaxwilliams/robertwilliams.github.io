@@ -1,9 +1,42 @@
-<title>Forts and ruins</title>
 
-<body>
 
-  <canvas id="myCanvas" width="300" height="300" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
-  <canvas id="colorPicker" width="300" height="50" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
 
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Forts and ruins Game</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Include bootstrap stuff -->
+        <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+        <script> 
+            $(function(){
+            $("#header").load("header.html"); 
+            $("#footer").load("footer.html"); 
+        });
+        </script> 
+        
+        <div id="header"></div>
+        
+    </head>
+    
+    <div class="container">
+    <body>
+            
+      <canvas id="myCanvas" width="300" height="300" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+      <canvas id="colorPicker" width="300" height="50" style="border:0px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+      <script src = "/forts_and_ruins.js"></script>
+
+    </body>
+    </div>
+
+
+    <div id="footer"></div>
+
+</html>
