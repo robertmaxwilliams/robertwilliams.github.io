@@ -279,8 +279,8 @@ Board.prototype = {
   //take a click coordinate and try to place a field
   tryPlaceField: function(x, y) {
 
-    var i = Math.floor(x / this.w - 0.5)
-    var j = Math.floor(y / this.h - 0.5)
+    var i = Math.floor(x / this.w)
+    var j = Math.floor(y / this.h)
     if (i >= this.grid.length || j >= this.grid[0].length) {
       return false
     }
