@@ -30,7 +30,8 @@
     <body>
         <button onclick="newGame(20, 20)">Click me</button>
         <input id="sizeChooser" type="number" name="quantity" min="5" max="100" step="5">
-        <input type="submit", onclick="newGame(document.getElementById("sizeChooser").value, 20)">
+        <input type="submit", onclick="newGame(parseInt(document.getElementById('sizeChooser').value), parseInt(document.getElementById('sizeChooser').value))"
+>
     <br>
       <button onclick="newGame(document.getElementById("sizeChooser").value, 20)">Click me</button>
       <br>
