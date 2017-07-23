@@ -93,7 +93,8 @@ ColorPicker.prototype = {
 
 
 //board is an object
-function Board(width, height) {
+function Board(width, height, colorPicker) {
+  this.colorPicker = colorPicker
   this.width = width
   this.height = height
   this.turnNumber = 0
@@ -345,9 +346,8 @@ Board.prototype = {
 }
 
 
-var board = new Board(20, 20)
 var colorPicker = new ColorPicker()
-board.colorPicker = colorPicker()
+var board = new Board(20, 20, colorPicker)
 function newGame(width, height){
 	board.reset(width, height)
 	console.log(board.toString())
