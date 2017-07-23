@@ -63,7 +63,7 @@ ColorPicker.prototype = {
   drawButtonTile: function(n) {
     this.ctx.fillStyle = fieldColors[n];
     this.ctx.fillRect(this.w * n, 0, this.w, this.h)
-    this.ctx.stroke(),
+    this.ctx.stroke()
     if (n != selectedFieldNum) {
       this.ctx.fillStyle = '#966341'
       this.ctx.fillRect(this.w * n, this.h * 0.8, this.w, this.h * 0.2)
