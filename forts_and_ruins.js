@@ -37,8 +37,10 @@ var dirtColors = ['#966341', '#9c6744', '#915d3a']
 
 var fieldColors = ['#496645', '#5d7046', '#7d7046', '#d6b458', '#ed572d', '#9b76b8']
 var selectedFieldNum = 0
+var lastKilledNum = -1 //default to -1 so it doesn't do anything first turn. board.reset also does this
 
-
+var skullImage = new Image();   // Create new img element
+skullImage.src = 'skull.png'; // Set source path
 
 
 function ColorPicker() {
@@ -61,13 +63,16 @@ ColorPicker.prototype = {
   drawButtonTile: function(n) {
     this.ctx.fillStyle = fieldColors[n];
     this.ctx.fillRect(this.w * n, 0, this.w, this.h)
-    this.ctx.stroke()
+    this.ctx.stroke(),
     if (n != selectedFieldNum) {
       this.ctx.fillStyle = '#966341'
       this.ctx.fillRect(this.w * n, this.h * 0.8, this.w, this.h * 0.2)
       this.ctx.stroke()
       this.ctx.fillRect(this.w * n, this.h * 0, this.w, this.h * 0.2)
       this.ctx.stroke()
+    }
+    if (n == lastKilledNum){
+      this.ctx.drawImage(skullImage, this.w*n, this.h/2)
     }
   },
   //draw the color picker
@@ -126,18 +131,19 @@ Board.prototype = {
     }
   },
   reset: function(width, height){
-		this.width = width
-		this.height = height
+	this.width = width
+	this.height = height
     this.grid = Array(this.height).fill(0).map(x => Array(this.width).fill('_'))
-		this.gameOver = false
-		this.calculateSize()
+	this.gameOver = false
+    this.calculateSize()
     this.turnNumber = 0
     this.setTile(2, 3, '1')
     this.setTile(2, 2, 'F')
     this.setTile(2, 1, '3')
-		//draw background in case pixels leak through
+    //draw background in case pixels leak through
     this.drawSquare(0, 0, this.canvas.width, this.canvas.height, "#966341")
     this.draw()
+    lastKilledNum = -1
   },
   //returns true for good to build, false for no good. fills potential space with "-" as it works
   lookForForts: function(options) {
