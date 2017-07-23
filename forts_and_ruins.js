@@ -138,13 +138,15 @@ Board.prototype = {
 	this.gameOver = false
     this.calculateSize()
     this.turnNumber = 0
-    this.setTile(2, 3, '1')
+    this.setTile(3, 2, '5')
     this.setTile(2, 2, 'F')
-    this.setTile(2, 1, '3')
+    this.setTile(2, 1, '4')
+    this.setTile(1, 1, 'F')
     //draw background in case pixels leak through
     this.drawSquare(0, 0, this.canvas.width, this.canvas.height, "#966341")
     this.draw()
     lastKilledNum = -1
+    this.colorPicker.draw()
   },
   //returns true for good to build, false for no good. fills potential space with "-" as it works
   lookForForts: function(options) {
@@ -196,7 +198,7 @@ Board.prototype = {
     var buffer = "Game Board:\n"
     for (i in this.grid) {
       for (j in this.grid[i]) {
-        buffer = buffer.concat(this.getTile(i, j))
+        buffer = buffer.concat(this.getTile(i, j)[0])
       }
       buffer = buffer.concat('\n')
     }
@@ -318,13 +320,15 @@ Board.prototype = {
         }
       }
     }
+    //kill forts that don't have a live field adjacent to them
     var numForts = 0
     for (i in this.grid) {
       for (j in this.grid[i]) {
       	if (this.getTile(i, j) == 'F'){
-        	var nearbyFields = this.adjacentTo(i, j , isNumeric)
-        	if (nearbyFields.length == 0)
-          	this.setTile(i, j, 'f')
+          var nearbyFields = this.adjacentTo(i, j, isNumeric)
+          
+          if (nearbyFields.length == 0)
+            this.setTile(i, j, 'f')
           else
           	numForts += 1
       	}
