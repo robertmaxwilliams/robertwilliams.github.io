@@ -242,7 +242,7 @@ Board.prototype = {
         } else if (this.getTile(i, j)[0] == 'd') { //draw dead field
           var colorNum = parseInt(this.getTile(i, j).slice(1))
           this.drawSquare(i * this.w, j * this.h, this.w, this.h, fieldColors[colorNum])
-          this.drawSquare(i * this.w, j * this.h, this.w, this.h, "rgba(255, 255, 255, 0.5)")
+          this.drawSquare(i * this.w, j * this.h, this.w, this.h, "rgba(0, 0, 0, 0.5)")
         } else if (this.getTile(i, j) == '_') { //draw dirt
           this.drawSquare(i * this.w, j * this.h, this.w, this.h, this.dirtColor(i, j))
 
@@ -313,8 +313,8 @@ Board.prototype = {
           else
           	numForts += 1
       	}
-    	}
-  	}
+      }
+    }
     if (numForts == 0)
     	this.gameOver = true
        
