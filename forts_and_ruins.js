@@ -266,7 +266,7 @@ Board.prototype = {
   },
   //find the color of dirt in a repeatable but randomish way
   dirtColor: function(i, j) {
-    return dirtColors[(((i + this.width * j + 517) * 275604547) % 9967) % dirtColors.length]
+    return dirtColors[(((i + this.width * j + 517) * 2147483647) % 16807) % dirtColors.length]
   },
   //click listener
   getPosition: function(event) {
