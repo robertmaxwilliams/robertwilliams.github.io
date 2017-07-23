@@ -185,6 +185,9 @@ Board.prototype = {
       options.push([i, j - 1])
     return options
   },
+  isAdjacentTo: function(i, j, checkFunction) {
+    return (adjacentTo(i, j, checkFunction).length != 0)
+  },
   isNearWall: function(i, j) {
     return (i + 1 >= this.grid.length || j + 1 >= this.grid[0].length || i - 1 < 0 || j - 1 < 0)
   },
@@ -325,9 +328,9 @@ Board.prototype = {
     for (i in this.grid) {
       for (j in this.grid[i]) {
       	if (this.getTile(i, j) == 'F'){
-          var nearbyFields = this.adjacentTo(i, j, isNumeric)
+          //var nearbyFields = this.adjacentTo(i, j, isNumeric)
           
-          if (nearbyFields.length == 0)
+          if (!this.isAdjacentTo(i, j, isNumeric))
             this.setTile(i, j, 'f')
           else
           	numForts += 1
